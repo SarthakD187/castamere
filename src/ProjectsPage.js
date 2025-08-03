@@ -15,7 +15,7 @@ const projects = [
   {
     name: "Board Game Tournament",
     description: "A site for managing board game tournaments with team signups, live brackets, and college pages.",
-    link: "https://your-boardgame-link.com"
+    link: "https://main.d3159rux9329vg.amplifyapp.com/"
   }
 ];
 
