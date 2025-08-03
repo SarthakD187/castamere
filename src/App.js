@@ -1,8 +1,15 @@
-import React from 'react';
-import CastamereHomepage from './CastamereHomepage';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import CastamereHomepage from "./CastamereHomepage";
+import ProjectsPage from "./ProjectsPage";
 
-function App() {
-  return <CastamereHomepage />;
+export default function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<CastamereHomepage />} />
+        <Route path="/projects" element={<ProjectsPage />} />
+      </Routes>
+    </Router>
+  );
 }
-
-export default App;
