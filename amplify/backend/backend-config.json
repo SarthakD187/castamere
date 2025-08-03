@@ -1,1 +1,43 @@
-{}
+{
+  "api": {
+    "SummarizerAPI": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "summarizeArticle"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
+  "function": {
+    "summarizeArticle": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_summarizeArticle_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "summarizeArticle"
+        }
+      ]
+    },
+    "AMPLIFY_function_summarizeArticle_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "summarizeArticle"
+        }
+      ]
+    }
+  }
+}

@@ -1,31 +1,36 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-// Your projects
 const projects = [
   {
-    name: "Portfolio Website",
-    description: "A personal portfolio built with React and AWS Amplify, featuring projects, photography, and more.",
-    link: "https://your-portfolio-link.com"
+    name: "AI Article Summarizer",
+    description:
+      "Summarizes news and blog articles with OpenAI. Paste a link and get a concise summary, powered by a Lambda backend.",
+    link: "/summarizer",
   },
   {
     name: "Image Classifier",
-    description: "A neural network app that classifies images in real-time, trained on custom datasets.",
-    link: "https://github.com/yourusername/image-classifier"
+    description:
+      "A neural network app that classifies images in real-time, trained on custom datasets.",
+    link: "https://github.com/yourusername/image-classifier",
   },
   {
     name: "Board Game Tournament",
-    description: "A site for managing board game tournaments with team signups, live brackets, and college pages.",
-    link: "https://main.d3159rux9329vg.amplifyapp.com/"
+    description:
+      "A site for managing board game tournaments with team signups, live brackets, and college pages.",
+    link: "https://main.d3159rux9329vg.amplifyapp.com/",
   },
   {
     name: "Git Repo Data Visualization Board",
-    description: "A dashboard that tracks this portfolio’s GitHub repository data and displays it at the bottom of the homepage. Explore real-time commits, contributors, and repository stats right on the main page.",
-    link: "/" 
-  }
+    description:
+      "A dashboard that tracks this portfolio’s GitHub repository data and displays it at the bottom of the homepage. Explore real-time commits, contributors, and repository stats right on the main page.",
+    link: "/",
+  },
 ];
 
 export default function ProjectsPage() {
   const [openIndex, setOpenIndex] = useState(null);
+  const navigate = useNavigate();
 
   return (
     <div className="min-h-screen flex flex-col items-center pt-24 relative bg-[#191716]">
@@ -51,32 +56,41 @@ export default function ProjectsPage() {
                   letterSpacing: "0.02em",
                   border: "none",
                   outline: "none",
-                  boxShadow: "none"
+                  boxShadow: "none",
                 }}
                 onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
               >
                 <span>
                   <span className="inline-block mr-2 align-middle">
-                    {/* Simple folder icon using emoji or SVG */}
-                    <span className="mr-1" aria-hidden>📁</span>
+                    <span className="mr-1" aria-hidden>
+                      📁
+                    </span>
                   </span>
                   {proj.name}
                 </span>
-                <span className={`transition-transform ${openIndex === idx ? "rotate-90" : ""}`}>
+                <span
+                  className={`transition-transform ${
+                    openIndex === idx ? "rotate-90" : ""
+                  }`}
+                >
                   ▶
                 </span>
               </button>
               {openIndex === idx && (
                 <div className="pl-14 pr-8 pb-5 pt-1 text-[#e9e5de] text-[0.97rem] border-l-4 border-[#cabfa7] bg-[#181716]/80 rounded-bl-lg animate-fadein">
                   <div className="pb-2">{proj.description}</div>
-                  <a
-                    href={proj.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <button
+                    onClick={() => {
+                      if (proj.link.startsWith("/")) {
+                        navigate(proj.link);
+                      } else {
+                        window.open(proj.link, "_blank", "noopener noreferrer");
+                      }
+                    }}
                     className="inline-block px-4 py-1 rounded border border-[#cabfa7] text-[#cabfa7] bg-transparent hover:bg-[#292420] hover:text-white transition text-[0.93rem]"
                   >
                     View Project
-                  </a>
+                  </button>
                 </div>
               )}
             </li>

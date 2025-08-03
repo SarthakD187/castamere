@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/summarize": {
+      "name": "/summarize",
+      "lambdaFunction": "summarizeArticle",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}
