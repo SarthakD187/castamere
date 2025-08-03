@@ -7,7 +7,7 @@ const buttons = [
   { label: "Projects" },
   { label: "Art" },
   { label: "Writing" },
-  { label: "Photograph" },
+  { label: "Photography" },
   { label: "" }
 ];
 
