@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import CastamereHomepage from "./CastamereHomepage";
-import ProjectsPage from "./ProjectsPage";
+import ProjectsPage from "./Projects/ProjectsPage";
 
 export default function App() {
   return (

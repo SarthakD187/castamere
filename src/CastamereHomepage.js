@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import GitRepoDataViz from "./GitRepoDataViz"; // import your component
+import GitRepoDataViz from "./Projects/GitRepoDataViz"; // import your component
 
 const buttons = [
   { label: "Personal Info" },
