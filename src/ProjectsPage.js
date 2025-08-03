@@ -16,6 +16,11 @@ const projects = [
     name: "Board Game Tournament",
     description: "A site for managing board game tournaments with team signups, live brackets, and college pages.",
     link: "https://main.d3159rux9329vg.amplifyapp.com/"
+  },
+  {
+    name: "Git Repo Data Visualization Board",
+    description: "A dashboard that tracks this portfolio’s GitHub repository data and displays it at the bottom of the homepage. Explore real-time commits, contributors, and repository stats right on the main page.",
+    link: "/" 
   }
 ];
 

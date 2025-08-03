@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import GitRepoDataViz from "./GitRepoDataViz"; // import your component
 
 const buttons = [
   { label: "Personal Info" },
@@ -53,6 +54,11 @@ export default function CastamereHomepage() {
               {btn.label || ""}
             </button>
           ))}
+
+          {/* Git Repo Data Viz spans both columns */}
+          <div className="col-span-2 mt-4">
+            <GitRepoDataViz />
+          </div>
         </div>
       </div>
     </div>
