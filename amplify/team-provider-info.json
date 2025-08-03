@@ -10,6 +10,17 @@
       "StackName": "amplify-castamere-dev-218b5",
       "StackId": "arn:aws:cloudformation:us-east-1:381492017704:stack/amplify-castamere-dev-218b5/751a7b80-7080-11f0-a8dc-0affe69900f7",
       "AmplifyAppId": "dly0ptycmxwoh"
+    },
+    "categories": {
+      "function": {
+        "summarizeArticle": {
+          "deploymentBucketName": "amplify-castamere-dev-218b5-deployment",
+          "s3Key": "amplify-builds/summarizeArticle-426b414d373253555a6f-build.zip"
+        }
+      },
+      "api": {
+        "SummarizerAPI": {}
+      }
     }
   }
 }
