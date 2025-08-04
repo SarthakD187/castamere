@@ -1,4 +1,17 @@
 {
+  "main": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-castamere-main-03ece-authRole",
+      "UnauthRoleArn": "arn:aws:iam::381492017704:role/amplify-castamere-main-03ece-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::381492017704:role/amplify-castamere-main-03ece-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-castamere-main-03ece-deployment",
+      "UnauthRoleName": "amplify-castamere-main-03ece-unauthRole",
+      "StackName": "amplify-castamere-main-03ece",
+      "StackId": "arn:aws:cloudformation:us-east-1:381492017704:stack/amplify-castamere-main-03ece/b38bb6b0-7083-11f0-869a-125d335f99b7",
+      "AmplifyAppId": "dly0ptycmxwoh"
+    }
+  },
   "dev": {
     "awscloudformation": {
       "AuthRoleName": "amplify-castamere-dev-218b5-authRole",
