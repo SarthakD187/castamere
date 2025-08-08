@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "paths": {
+    "/candle": {
+      "name": "/candle",
+      "lambdaFunction": "finnhubProxy",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/quote": {
+      "name": "/quote",
+      "lambdaFunction": "finnhubProxy",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

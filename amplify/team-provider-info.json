@@ -29,10 +29,15 @@
         "summarizeArticle": {
           "deploymentBucketName": "amplify-castamere-dev-218b5-deployment",
           "s3Key": "amplify-builds/summarizeArticle-426b414d373253555a6f-build.zip"
+        },
+        "finnhubProxy": {
+          "deploymentBucketName": "amplify-castamere-dev-218b5-deployment",
+          "s3Key": "amplify-builds/finnhubProxy-4c584e6a444879663779-build.zip"
         }
       },
       "api": {
-        "SummarizerAPI": {}
+        "SummarizerAPI": {},
+        "FinnhubAPI": {}
       }
     }
   }

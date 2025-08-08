@@ -1,0 +1,9 @@
+{
+  "lambdaLayers": [],
+  "environmentVariableList": [
+    {
+      "cloudFormationParameterName": "alphaVantageApiKey",
+      "environmentVariableName": "ALPHA_VANTAGE_API_KEY"
+    }
+  ]
+}

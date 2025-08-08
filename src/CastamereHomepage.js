@@ -1,66 +1,91 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import GitRepoDataViz from "./Projects/GitRepoDataViz"; // import your component
-
-const buttons = [
-  { label: "Personal Info" },
-  { label: "Projects" },
-  { label: "Art" },
-  { label: "Writing" },
-  { label: "Photography" },
-  { label: "" }
-];
+import React, { useRef } from "react";
+import ProjectsSection from "./Projects/ProjectsPage";   // ⬅️ NEW IMPORT
 
 export default function CastamereHomepage() {
-  const navigate = useNavigate();
+  const heroRef  = useRef(null);
+  const workRef  = useRef(null);
+  const storyRef = useRef(null);
+  const chatRef  = useRef(null);
+
+  const scrollTo = (r) =>
+    r.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+
+  const nav = [
+    { label: "Hey",   ref: heroRef },
+    { label: "Work",  ref: workRef },
+    { label: "Story", ref: storyRef },
+    { label: "Chat",  ref: chatRef },
+  ];
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center relative bg-[#191716]">
-      {/* Subtle dots background */}
-      <div className="noise-bg"></div>
+    <div className="w-full relative">
+      {/* GLOBAL GRADIENT BACKDROP */}
+      <div
+        className="fixed inset-0 -z-10"
+        style={{
+          backgroundImage:
+            "linear-gradient(to bottom, #FF5800 0%, #FF5800 50%, #ffffff 85%)",
+        }}
+      />
 
-      {/* File-directory style archive card */}
-      <div className="w-full max-w-xl bg-[#221f1e]/80 border border-[#39322b] rounded-xl shadow-md p-0 z-10">
-        <header className="font-mono uppercase tracking-wider text-gray-200 text-base px-8 pt-8 pb-4 border-b border-[#39322b] bg-[#191716]/80 rounded-t-xl select-none">
-          /castamere
-        </header>
-        <div className="grid grid-cols-2 gap-x-8 gap-y-6 px-8 py-8">
-          {buttons.slice(0, 6).map((btn, i) => (
-            <button
-              key={i}
-              className={`
-                font-mono rounded-md px-8 py-7 text-lg md:text-xl font-semibold
-                border border-[#cabfa7] bg-transparent text-[#cabfa7]
-                hover:bg-[#292420] hover:text-white focus:bg-[#292420] focus:text-white
-                transition select-none
-                ${btn.label === "" ? "opacity-40 cursor-not-allowed" : ""}
-              `}
-              style={{
-                minWidth: "150px",
-                minHeight: "68px",
-                letterSpacing: "0.03em",
-                outline: "none",
-                boxShadow: "none",
-              }}
-              disabled={btn.label === ""}
-              onClick={() => {
-                if (btn.label === "Projects") {
-                  navigate("/projects");
-                } else if (btn.label) {
-                  alert(`Navigate to: ${btn.label}`);
-                }
-              }}
-            >
-              {btn.label || ""}
-            </button>
+      {/* PILL NAV */}
+      <nav className="fixed top-3 inset-x-0 flex justify-center z-20">
+        <ul className="flex gap-4 px-4 py-2 rounded-full bg-black/85 text-white text-sm md:text-base font-medium shadow-lg">
+          {nav.map(({ label, ref }) => (
+            <li key={label}>
+              <button
+                onClick={() => scrollTo(ref)}
+                className="px-3 py-1 rounded-full hover:bg-white/10 focus:bg-[#3461eb] transition"
+              >
+                {label}
+              </button>
+            </li>
           ))}
+        </ul>
+      </nav>
 
-          {/* Git Repo Data Viz spans both columns */}
-          <div className="col-span-2 mt-4">
-            <GitRepoDataViz />
-          </div>
+      {/* HERO */}
+      <section ref={heroRef} className="relative h-screen">
+        <div
+          className="absolute inset-0 -z-10"
+          style={{
+            backgroundImage:
+              "linear-gradient(to bottom, #FF5800 0%, #FF5800 50%, #ffffff 85%)",
+          }}
+        />
+        <div className="absolute bottom-2 left-2 md:bottom-8 md:left-8">
+          <p className="max-w-xl text-[1.5rem] leading-snug font-light text-black">
+            Hey! Welcome to my portfolio! This is an archive of projects amongst other things.
+          </p>
+          <h1
+            className="
+              mt-10 font-noir leading-[0.9] break-words select-none
+              text-[clamp(3.5rem,12vw,9rem)] text-black
+            "
+          >
+            Sarthak&nbsp;Darekar
+          </h1>
         </div>
-      </div>
+      </section>
+
+      {/* WORK – animated card grid */}
+      <ProjectsSection sectionRef={workRef} />   {/* ⬅️ REPLACES OLD PLACEHOLDER */}
+
+      {/* STORY */}
+      <section ref={storyRef} className="py-24 px-6 md:px-16 bg-[#f8f8f8]">
+        <h2 className="text-4xl md:text-5xl font-bold mb-8 text-[#3461eb]">
+          My&nbsp;Story
+        </h2>
+        {/* bio / timeline */}
+      </section>
+
+      {/* CHAT */}
+      <section ref={chatRef} className="py-24 px-6 md:px-16 bg-white">
+        <h2 className="text-4xl md:text-5xl font-bold mb-8 text-[#3461eb]">
+          Let’s&nbsp;Chat
+        </h2>
+        {/* contact links / form */}
+      </section>
     </div>
   );
 }

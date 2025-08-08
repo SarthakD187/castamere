@@ -2,16 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.noise-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  opacity: 0.22; /* Tweak for stronger/weaker texture */
-  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='8' cy='8' r='1.2' fill='%23cabfa7' /%3E%3C/svg%3E");
-  background-size: 16px 16px;
-}
-
 
 @keyframes fadein {
   from { opacity: 0; transform: translateY(-8px);}
@@ -19,4 +9,12 @@
 }
 .animate-fadein {
   animation: fadein 0.35s cubic-bezier(.45,.9,.45,1.2);
+}
+
+@font-face {
+  font-family: 'Noir Pro';
+  src: url('./assets/fonts/NoirPro-Bold.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }

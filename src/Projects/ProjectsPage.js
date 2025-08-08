@@ -1,102 +1,105 @@
-import React, { useState } from "react";
+import React from "react";
+import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { ArrowUpRight } from "lucide-react";
 
+/* ——— project data ——— */
 const projects = [
   {
     name: "AI Article Summarizer",
     description:
-      "Summarizes news and blog articles with OpenAI. Paste a link and get a concise summary, powered by a Lambda backend.",
+      "Paste any link & get a concise summary via OpenAI + Lambda backend.",
     link: "/summarizer",
   },
   {
     name: "Image Classifier",
     description:
-      "A neural network app that classifies images in real-time, trained on custom datasets.",
+      "A neural-network app that classifies images in real-time, trained on custom datasets.",
     link: "https://github.com/yourusername/image-classifier",
   },
   {
     name: "Board Game Tournament",
     description:
-      "A site for managing board game tournaments with team signups, live brackets, and college pages.",
+      "Manage tournaments with team sign-ups, live brackets & college pages.",
     link: "https://main.d3159rux9329vg.amplifyapp.com/",
   },
   {
-    name: "Git Repo Data Visualization Board",
+    name: "Git Repo Data Viz Board",
     description:
-      "A dashboard that tracks this portfolio’s GitHub repository data and displays it at the bottom of the homepage. Explore real-time commits, contributors, and repository stats right on the main page.",
+      "Tracks portfolio repo data (commits, contributors, stats) live on the homepage.",
     link: "/",
+  },
+  {
+    name: "Stock Market Dashboard",
+    description:
+      "Real-time prices & trends pulled from the Finnhub API.",
+    link: "/stock-market-dashboard",
   },
 ];
 
-export default function ProjectsPage() {
-  const [openIndex, setOpenIndex] = useState(null);
+export default function ProjectsSection({ sectionRef }) {
   const navigate = useNavigate();
 
-  return (
-    <div className="min-h-screen flex flex-col items-center pt-24 relative bg-[#191716]">
-      {/* Subtle dots background */}
-      <div className="noise-bg"></div>
+  /* card hover motion */
+  const hover = {
+    scale: 1.04,
+    rotateX: 4,
+    rotateY: -4,
+    boxShadow: "0 12px 25px rgba(0,0,0,0.15)",
+  };
 
-      {/* File directory panel */}
-      <div className="w-full max-w-xl bg-[#221f1e]/80 border border-[#39322b] rounded-xl shadow-md p-0 z-10">
-        <h2 className="font-mono uppercase tracking-wider text-gray-200 text-base px-8 pt-8 pb-4 border-b border-[#39322b] bg-[#191716]/80 rounded-t-xl select-none">
-          /projects
-        </h2>
-        <ul className="divide-y divide-[#322c28]">
-          {projects.map((proj, idx) => (
-            <li key={proj.name} className="font-mono">
-              <button
-                className={`
-                  w-full flex items-center justify-between px-8 py-5 text-left text-base md:text-lg font-semibold
-                  bg-transparent hover:bg-[#272421] focus:bg-[#272421]
-                  text-[#cabfa7] transition select-none
-                `}
-                style={{
-                  fontWeight: 400,
-                  letterSpacing: "0.02em",
-                  border: "none",
-                  outline: "none",
-                  boxShadow: "none",
-                }}
-                onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
-              >
-                <span>
-                  <span className="inline-block mr-2 align-middle">
-                    <span className="mr-1" aria-hidden>
-                      📁
-                    </span>
-                  </span>
-                  {proj.name}
-                </span>
-                <span
-                  className={`transition-transform ${
-                    openIndex === idx ? "rotate-90" : ""
-                  }`}
-                >
-                  ▶
-                </span>
-              </button>
-              {openIndex === idx && (
-                <div className="pl-14 pr-8 pb-5 pt-1 text-[#e9e5de] text-[0.97rem] border-l-4 border-[#cabfa7] bg-[#181716]/80 rounded-bl-lg animate-fadein">
-                  <div className="pb-2">{proj.description}</div>
-                  <button
-                    onClick={() => {
-                      if (proj.link.startsWith("/")) {
-                        navigate(proj.link);
-                      } else {
-                        window.open(proj.link, "_blank", "noopener noreferrer");
-                      }
-                    }}
-                    className="inline-block px-4 py-1 rounded border border-[#cabfa7] text-[#cabfa7] bg-transparent hover:bg-[#292420] hover:text-white transition text-[0.93rem]"
-                  >
-                    View Project
-                  </button>
-                </div>
-              )}
-            </li>
-          ))}
-        </ul>
+  return (
+    <section
+      ref={sectionRef}
+      id="work"
+      className="py-24 px-6 md:px-16 bg-white"
+    >
+      <h2 className="text-4xl md:text-5xl font-bold mb-14 text-[#0E79B2]">
+        Featured&nbsp;Projects
+      </h2>
+
+      {/* responsive grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        {projects.map((proj) => (
+          <motion.div
+            key={proj.name}
+            whileHover={hover}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            className="
+              relative aspect-[4/3] rounded-2xl bg-[#fdfdfd] border border-gray-200
+              shadow-lg overflow-hidden cursor-pointer group
+            "
+            onClick={() => {
+              if (proj.link.startsWith("/")) navigate(proj.link);
+              else window.open(proj.link, "_blank", "noopener noreferrer");
+            }}
+          >
+            {/* title */}
+            <div className="p-6 flex flex-col h-full justify-between">
+              <h3 className="text-xl font-semibold text-black group-hover:text-[#BF1363] transition">
+                {proj.name}
+              </h3>
+
+              {/* arrow badge */}
+              <ArrowUpRight
+                size={28}
+                className="text-[#BF1363] opacity-0 group-hover:opacity-100 transition-all duration-200 self-end"
+              />
+            </div>
+
+            {/* overlay on hover */}
+            <div
+              className="
+                absolute inset-0 bg-white/90 backdrop-blur-sm p-6 flex items-center justify-center
+                text-center text-gray-800 text-[0.95rem] opacity-0 group-hover:opacity-100
+                transition-opacity duration-300
+              "
+            >
+              {proj.description}
+            </div>
+          </motion.div>
+        ))}
       </div>
-    </div>
+    </section>
   );
 }

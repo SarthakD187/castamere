@@ -1,5 +1,19 @@
 {
   "api": {
+    "FinnhubAPI": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "finnhubProxy"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    },
     "SummarizerAPI": {
       "dependsOn": [
         {
@@ -16,6 +30,12 @@
     }
   },
   "function": {
+    "finnhubProxy": {
+      "build": true,
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "summarizeArticle": {
       "build": true,
       "providerPlugin": "awscloudformation",
@@ -23,6 +43,30 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_finnhubProxy_alphaVantageApiKey": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "finnhubProxy"
+        }
+      ]
+    },
+    "AMPLIFY_function_finnhubProxy_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "finnhubProxy"
+        }
+      ]
+    },
+    "AMPLIFY_function_finnhubProxy_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "finnhubProxy"
+        }
+      ]
+    },
     "AMPLIFY_function_summarizeArticle_deploymentBucketName": {
       "usedBy": [
         {
