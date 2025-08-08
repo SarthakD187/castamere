@@ -61,7 +61,7 @@ export default function CastamereHomepage() {
           <h1
             style={{ fontFamily: "Noir Pro, sans-serif" }}
             className="
-              mt-10 leading-[0.9] break-words select-none
+              font-bold mt-10 leading-[0.9] break-words select-none
               text-[clamp(3.5rem,12vw,9rem)] text-black
             "
           >
