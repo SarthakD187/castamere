@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
-import ProjectsSection from "./Projects/ProjectsPage";
-import './index.css'; 
+import ProjectsSection from "./Projects/ProjectsPage";   // ⬅️ new file
+import "./index.css";
 
 export default function CastamereHomepage() {
   const heroRef  = useRef(null);
@@ -25,7 +25,7 @@ export default function CastamereHomepage() {
         className="fixed inset-0 -z-10"
         style={{
           backgroundImage:
-            "linear-gradient(to bottom, #FF5800 0%, #FF5800 50%, #ffffff 85%)",
+            "linear-gradient(to bottom, #FF5800 0%, #FF5800 15%, #ffffff 85%)",
         }}
       />
 
@@ -51,7 +51,7 @@ export default function CastamereHomepage() {
           className="absolute inset-0 -z-10"
           style={{
             backgroundImage:
-              "linear-gradient(to bottom, #FF5800 0%, #FF5800 50%, #ffffff 85%)",
+              "linear-gradient(to bottom, #FF5800 0%, #FF5800 15%, #ffffff 85%)",
           }}
         />
         <div className="absolute bottom-2 left-2 md:bottom-8 md:left-8">
@@ -59,7 +59,7 @@ export default function CastamereHomepage() {
             Hey! Welcome to my portfolio! This is an archive of projects amongst other things.
           </p>
           <h1
-            style={{ fontFamily: "Noir Pro, sans-serif" }}
+            style={{ fontFamily: '"Noir Pro", sans-serif' }}
             className="
               font-bold mt-10 leading-[0.9] break-words select-none
               text-[clamp(3.5rem,12vw,9rem)] text-black
