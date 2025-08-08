@@ -6,8 +6,6 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        display: ['Kigo', 'sans-serif'], 
-        nova: ['"Nova Klasse"', 'sans-serif'], 
         noir: ['"Noir Pro"', 'sans-serif'], // <— new family
       },
     },
