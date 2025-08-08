@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
-import ProjectsSection from "./Projects/ProjectsPage";   // ⬅️ NEW IMPORT
+import ProjectsSection from "./Projects/ProjectsPage";
+import './index.css'; 
 
 export default function CastamereHomepage() {
   const heroRef  = useRef(null);
@@ -58,8 +59,9 @@ export default function CastamereHomepage() {
             Hey! Welcome to my portfolio! This is an archive of projects amongst other things.
           </p>
           <h1
+            style={{ fontFamily: "Noir Pro, sans-serif" }}
             className="
-              mt-10 font-noir leading-[0.9] break-words select-none
+              mt-10 leading-[0.9] break-words select-none
               text-[clamp(3.5rem,12vw,9rem)] text-black
             "
           >
@@ -68,8 +70,8 @@ export default function CastamereHomepage() {
         </div>
       </section>
 
-      {/* WORK – animated card grid */}
-      <ProjectsSection sectionRef={workRef} />   {/* ⬅️ REPLACES OLD PLACEHOLDER */}
+      {/* WORK */}
+      <ProjectsSection sectionRef={workRef} />
 
       {/* STORY */}
       <section ref={storyRef} className="py-24 px-6 md:px-16 bg-[#f8f8f8]">
